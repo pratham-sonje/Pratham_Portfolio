@@ -51,10 +51,6 @@
   letter-spacing: -0.02em;
 }
 
-.brand-dot {
-  color: var(--accent-primary);
-}
-
 .brand-desc {
   font-size: 0.9375rem;
   line-height: 1.6;

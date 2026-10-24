@@ -54,10 +54,6 @@
   letter-spacing: -0.02em;
 }
 
-.brand-dot {
-  color: var(--accent-primary);
-}
-
 /* Desktop Nav */
 .desktop-nav {
   display: none;
