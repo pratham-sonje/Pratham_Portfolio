@@ -1,0 +1,90 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand & Mission -->
+      <div class="footer-brand-col">
+        <div class="brand">
+          <span class="brand-monogram">PS</span>
+          <span class="brand-name">Pratham<span class="brand-dot">.</span></span>
+        </div>
+        <p class="brand-desc">
+          Full-Stack Web Developer crafting high-performance, modular Angular architectures, and responsive web & mobile applications.
+        </p>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links-list">
+          <li><a href="#about" (click)="scrollToSection('about', $event)">About</a></li>
+          <li><a href="#experience" (click)="scrollToSection('experience', $event)">Experience</a></li>
+          <li><a href="#projects" (click)="scrollToSection('projects', $event)">Projects</a></li>
+          <li><a href="#skills" (click)="scrollToSection('skills', $event)">Skills</a></li>
+          <li><a href="#education" (click)="scrollToSection('education', $event)">Education</a></li>
+          <li><a href="#contact" (click)="scrollToSection('contact', $event)">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Social & Connect -->
+      <div class="footer-connect-col">
+        <h4 class="footer-col-title">Connect</h4>
+        <div class="footer-social-icons">
+          <a
+            [href]="portfolio().linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="LinkedIn Profile"
+          >
+            <app-icon name="linkedin" [size]="18" />
+          </a>
+          <a
+            [href]="portfolio().github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="GitHub Profile"
+          >
+            <app-icon name="github" [size]="18" />
+          </a>
+          <a
+            [href]="'mailto:' + portfolio().email"
+            class="social-btn"
+            aria-label="Email Me"
+          >
+            <app-icon name="mail" [size]="18" />
+          </a>
+          <a
+            [href]="'tel:' + portfolio().phone"
+            class="social-btn"
+            aria-label="Call Me"
+          >
+            <app-icon name="phone" [size]="18" />
+          </a>
+        </div>
+
+        <div class="built-with">
+          <span class="built-text">Built with Angular 22 & TypeScript</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="copyright-text">
+        © {{ currentYear }} {{ portfolio().name }}. All rights reserved.
+      </p>
+
+      <button
+        type="button"
+        class="back-to-top-btn"
+        (click)="scrollToTop()"
+        aria-label="Scroll back to top"
+      >
+        <span>Back to top</span>
+        <app-icon name="arrow-up-right" [size]="16" />
+      </button>
+    </div>
+  </div>
+</footer>
+

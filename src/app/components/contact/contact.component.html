@@ -1,0 +1,203 @@
+<section id="contact" class="section-wrapper contact-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="section-kicker">
+        <app-icon name="mail" [size]="14" />
+        <span>Connect With Me</span>
+      </div>
+      <h2 class="section-title">Let's Discuss Opportunities</h2>
+      <p class="section-description">
+        Interested in collaborating, hiring for full-stack/Angular roles, or discussing a project? Feel free to reach out directly or drop a message below.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Left: Direct Contact Information Cards -->
+      <div class="contact-info-panel">
+        <h3 class="panel-heading">Direct Contact Channels</h3>
+        <p class="panel-intro">
+          I am actively available for web engineering roles and high-impact software projects.
+        </p>
+
+        <div class="contact-methods">
+          <!-- Email -->
+          <div class="contact-card">
+            <div class="card-icon-box">
+              <app-icon name="mail" [size]="20" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Email Address</span>
+              <a [href]="'mailto:' + portfolio().email" class="card-value link">
+                {{ portfolio().email }}
+              </a>
+            </div>
+            <button
+              type="button"
+              class="copy-btn"
+              (click)="copyToClipboard(portfolio().email, 'email')"
+              [title]="emailCopied() ? 'Copied!' : 'Copy Email'"
+              aria-label="Copy Email address"
+            >
+              <app-icon [name]="emailCopied() ? 'check' : 'copy'" [size]="16" />
+            </button>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-card">
+            <div class="card-icon-box">
+              <app-icon name="phone" [size]="20" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Phone & WhatsApp</span>
+              <a [href]="'tel:' + portfolio().phone" class="card-value link">
+                {{ portfolio().phoneDisplay }}
+              </a>
+            </div>
+            <button
+              type="button"
+              class="copy-btn"
+              (click)="copyToClipboard(portfolio().phoneDisplay, 'phone')"
+              [title]="phoneCopied() ? 'Copied!' : 'Copy Phone number'"
+              aria-label="Copy Phone number"
+            >
+              <app-icon [name]="phoneCopied() ? 'check' : 'copy'" [size]="16" />
+            </button>
+          </div>
+
+          <!-- Location -->
+          <div class="contact-card">
+            <div class="card-icon-box">
+              <app-icon name="map-pin" [size]="20" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Current Base</span>
+              <span class="card-value">{{ portfolio().location }}</span>
+            </div>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="contact-card">
+            <div class="card-icon-box">
+              <app-icon name="linkedin" [size]="20" />
+            </div>
+            <div class="card-body">
+              <span class="card-label">Professional Profile</span>
+              <a
+                [href]="portfolio().linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card-value link"
+              >
+                linkedin.com/in/pratham-sonje
+              </a>
+            </div>
+            <a
+              [href]="portfolio().linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="copy-btn"
+              aria-label="Open LinkedIn"
+            >
+              <app-icon name="external-link" [size]="16" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Functional Message Form -->
+      <div class="contact-form-panel">
+        <h3 class="panel-heading">Send a Message</h3>
+        <p class="panel-intro">
+          Fill out the form below to immediately initiate an inquiry email.
+        </p>
+
+        @if (submitSuccess()) {
+          <div class="alert-success" role="alert">
+            <app-icon name="check" [size]="18" />
+            <span>Thank you! Your email client has been launched with your message. I will reply promptly!</span>
+          </div>
+        }
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-body" novalidate>
+          <div class="form-row">
+            <!-- Name Input -->
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name <span class="required">*</span></label>
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="e.g. Alex Smith"
+                [class.is-invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+              />
+              @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                <span class="form-error">Please provide your name (min 2 characters).</span>
+              }
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+              <input
+                id="email"
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="alex@company.com"
+                [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+              />
+              @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                <span class="form-error">Please enter a valid email address.</span>
+              }
+            </div>
+          </div>
+
+          <!-- Subject Input -->
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject <span class="required">*</span></label>
+            <input
+              id="subject"
+              type="text"
+              class="form-control"
+              formControlName="subject"
+              placeholder="Full-Stack Developer Role / Project Consultation"
+              [class.is-invalid]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched"
+            />
+            @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched) {
+              <span class="form-error">Please specify a subject.</span>
+            }
+          </div>
+
+          <!-- Message Textarea -->
+          <div class="form-group">
+            <label for="message" class="form-label">Message <span class="required">*</span></label>
+            <textarea
+              id="message"
+              class="form-control textarea"
+              rows="5"
+              formControlName="message"
+              placeholder="Tell me about your team, tech stack, or the project you'd like to collaborate on..."
+              [class.is-invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+            ></textarea>
+            @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+              <span class="form-error">Please include a message (at least 10 characters).</span>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="btn btn-primary submit-btn"
+            [disabled]="isSubmitting()"
+          >
+            <app-icon name="send" [size]="18" />
+            <span>{{ isSubmitting() ? 'Sending...' : 'Send Message' }}</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

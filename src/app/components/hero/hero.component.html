@@ -1,0 +1,172 @@
+<section id="hero" class="hero-section">
+  <!-- Decorative Ambient Glows -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <div class="container hero-container">
+    <!-- Left Column: Content & Intro -->
+    <div class="hero-content">
+      <!-- Status Badge -->
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for Full-Time & High-Impact Opportunities</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-name">
+        Hi, I'm <span class="gradient-text">{{ portfolio().name }}</span>
+      </h1>
+      
+      <p class="hero-title">
+        {{ portfolio().title }} <span class="hero-specialty">| Angular & Modern Web</span>
+      </p>
+
+      <p class="hero-summary">
+        {{ portfolio().summary }}
+      </p>
+
+      <!-- Quick Action Buttons -->
+      <div class="hero-actions">
+        <a
+          href="#projects"
+          class="btn btn-primary"
+          (click)="scrollToSection('projects', $event)"
+        >
+          <span>View Featured Projects</span>
+          <app-icon name="arrow-up-right" [size]="18" />
+        </a>
+
+        <a
+          href="#contact"
+          class="btn btn-secondary"
+          (click)="scrollToSection('contact', $event)"
+        >
+          <app-icon name="mail" [size]="18" />
+          <span>Get In Touch</span>
+        </a>
+
+        <a
+          [href]="portfolio().resumeFilePath"
+          class="btn btn-outline"
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="download" [size]="18" />
+          <span>Download CV</span>
+        </a>
+      </div>
+
+      <!-- Quick Contact Info Pills -->
+      <div class="hero-contact-strip">
+        <a [href]="'mailto:' + portfolio().email" class="contact-pill" title="Email Pratham">
+          <app-icon name="mail" [size]="16" />
+          <span>{{ portfolio().email }}</span>
+        </a>
+        <a [href]="'tel:' + portfolio().phone" class="contact-pill" title="Call Pratham">
+          <app-icon name="phone" [size]="16" />
+          <span>{{ portfolio().phoneDisplay }}</span>
+        </a>
+        <span class="contact-pill">
+          <app-icon name="map-pin" [size]="16" />
+          <span>{{ portfolio().location }}</span>
+        </span>
+      </div>
+
+      <!-- Social Links -->
+      <div class="hero-socials">
+        <a
+          [href]="portfolio().linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon-link"
+          aria-label="LinkedIn Profile"
+          title="Pratham's LinkedIn"
+        >
+          <app-icon name="linkedin" [size]="20" />
+        </a>
+        <a
+          [href]="portfolio().github"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon-link"
+          aria-label="GitHub Profile"
+          title="Pratham's GitHub"
+        >
+          <app-icon name="github" [size]="20" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Visual Avatar & Tech Canvas Treatment -->
+    <div class="hero-visual">
+      <div class="visual-card">
+        <!-- Floating Tech Tags -->
+        <div class="floating-badge badge-angular" title="Angular Framework">
+          <span class="tech-icon-dot angular-dot"></span>
+          <span>Angular</span>
+        </div>
+        <div class="floating-badge badge-ts" title="TypeScript">
+          <span class="tech-icon-dot ts-dot"></span>
+          <span>TypeScript</span>
+        </div>
+        <div class="floating-badge badge-rxjs" title="RxJS Reactive Programming">
+          <span class="tech-icon-dot rxjs-dot"></span>
+          <span>RxJS</span>
+        </div>
+        <div class="floating-badge badge-node" title="Node.js & REST APIs">
+          <span class="tech-icon-dot node-dot"></span>
+          <span>Node.js</span>
+        </div>
+
+        <!-- Central Avatar Card -->
+        <div class="avatar-frame">
+          <div class="avatar-inner">
+            <img
+              [src]="portfolio().profileImage"
+              [alt]="portfolio().name"
+              class="avatar-image"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+        <!-- Active Developer Terminal Widget -->
+        <div class="code-pill-card">
+          <div class="code-pill-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-pill-title">developer.ts</span>
+          </div>
+          <div class="code-pill-body">
+            <code>
+              <span class="syntax-keyword">const</span> developer = &#123;<br>
+              &nbsp;&nbsp;name: <span class="syntax-string">'Pratham Sonje'</span>,<br>
+              &nbsp;&nbsp;role: <span class="syntax-string">'Full-Stack Web Dev'</span>,<br>
+              &nbsp;&nbsp;stack: [<span class="syntax-string">'Angular'</span>, <span class="syntax-string">'Ionic'</span>, <span class="syntax-string">'RxJS'</span>],<br>
+              &nbsp;&nbsp;status: <span class="syntax-string">'Building scalable apps'</span><br>
+              &#125;;
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Metric Stats Bar -->
+  <div class="container hero-stats-container">
+    <div class="stats-grid">
+      @for (stat of portfolio().stats; track stat.label) {
+        <div class="stat-card">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+          @if (stat.helper) {
+            <div class="stat-helper">{{ stat.helper }}</div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

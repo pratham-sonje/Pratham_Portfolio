@@ -1,0 +1,64 @@
+<section id="about" class="section-wrapper about-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-kicker">
+        <app-icon name="sparkles" [size]="14" />
+        <span>About Me</span>
+      </div>
+      <h2 class="section-title">Architecting High-Performance Web & Mobile Experiences</h2>
+      <p class="section-description">
+        Committed to clean code, modular frontend systems, and end-to-end feature ownership.
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="about-grid">
+      <!-- Left: Story & Narrative -->
+      <div class="about-story-card">
+        <h3 class="story-heading">Full-Stack Web Developer with a Frontend Passion</h3>
+        
+        <p class="story-paragraph">
+          {{ portfolio().summary }}
+        </p>
+
+        <p class="story-paragraph">
+          At <strong>Application Nexus Webservices Pvt. Ltd.</strong>, I have been instrumental in engineering production-grade Angular applications, architecting robust authentication flows with JWT and HTTP interceptors, and migrating critical REST endpoints to GraphQL.
+        </p>
+
+        <div class="about-quick-specs">
+          <div class="spec-item">
+            <span class="spec-label">Location:</span>
+            <span class="spec-value">{{ portfolio().location }}</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Education:</span>
+            <span class="spec-value">MCA (78.85%) & BCS (79.64%)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Primary Stack:</span>
+            <span class="spec-value">Angular, TypeScript, RxJS, Ionic, Node.js</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Focus:</span>
+            <span class="spec-value">Scalable UI Systems, API Integration, High Performance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Core Engineering Pillars -->
+      <div class="pillars-grid">
+        @for (pillar of pillars; track pillar.title) {
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <app-icon [name]="pillar.icon" [size]="22" />
+            </div>
+            <h4 class="pillar-title">{{ pillar.title }}</h4>
+            <p class="pillar-desc">{{ pillar.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+

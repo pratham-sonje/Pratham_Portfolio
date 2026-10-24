@@ -1,0 +1,115 @@
+<section id="projects" class="section-wrapper projects-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-kicker">
+        <app-icon name="layers" [size]="14" />
+        <span>Featured Engineering</span>
+      </div>
+      <h2 class="section-title">Key Projects & Applications</h2>
+      <p class="section-description">
+        Real-world production systems highlighting canvas vector editing, AI image transformation, GraphQL migrations, and location-aware mobile applications.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs" role="tablist">
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="tab-btn"
+            [class.active]="activeCategory() === category"
+            (click)="setCategory(category)"
+            role="tab"
+            [attr.aria-selected]="activeCategory() === category"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects(); track project.id) {
+        <article class="project-card">
+          <!-- Card Header & Metadata -->
+          <div class="project-header">
+            <div class="project-badge-row">
+              <span class="badge category-badge">{{ project.category }}</span>
+              @if (project.company) {
+                <span class="project-company-badge">{{ project.company }}</span>
+              }
+            </div>
+
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-subtitle">{{ project.subtitle }}</p>
+          </div>
+
+          <!-- Highlight Metric Strip -->
+          @if (project.metrics) {
+            <div class="metric-callout">
+              <app-icon name="sparkles" [size]="15" />
+              <span>{{ project.metrics }}</span>
+            </div>
+          }
+
+          <!-- Project Description -->
+          <p class="project-description">{{ project.description }}</p>
+
+          <!-- Bulleted Technical Highlights -->
+          <div class="project-highlights">
+            <h4 class="highlights-heading">Key Technical Contributions:</h4>
+            <ul class="highlights-list">
+              @for (highlight of project.highlights; track highlight) {
+                <li class="highlight-item">
+                  <span class="highlight-bullet">▹</span>
+                  <span class="highlight-text">{{ highlight }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Tech Stack Tags -->
+          <div class="project-tech-stack">
+            @for (tech of project.technologies; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+
+          <!-- Project Footer Links -->
+          <div class="project-footer">
+            @if (project.liveUrl) {
+              <a
+                [href]="project.liveUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary btn-sm"
+              >
+                <span>Live Website</span>
+                <app-icon name="external-link" [size]="14" />
+              </a>
+            } @else {
+              <span class="badge enterprise-notice" title="Proprietary enterprise mobile application">
+                Enterprise Product
+              </span>
+            }
+
+            @if (project.githubUrl) {
+              <a
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn-sm"
+                title="View code or demo repository"
+              >
+                <app-icon name="github" [size]="15" />
+                <span>Source / Repo</span>
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+

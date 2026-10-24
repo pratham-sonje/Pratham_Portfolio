@@ -1,0 +1,79 @@
+<section id="experience" class="section-wrapper experience-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="section-kicker">
+        <app-icon name="briefcase" [size]="14" />
+        <span>Career Journey</span>
+      </div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-description">
+        Demonstrated track record of shipping enterprise Angular features, building hybrid mobile apps, and collaborating with cross-functional teams.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline-container">
+      @for (exp of portfolio().experiences; track exp.id) {
+        <div class="timeline-item" [class.is-current]="exp.current">
+          <!-- Timeline Marker -->
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+
+          <!-- Timeline Card -->
+          <div class="timeline-card">
+            <div class="card-header">
+              <div class="header-main">
+                <div class="role-wrapper">
+                  <h3 class="role-title">{{ exp.role }}</h3>
+                  @if (exp.current) {
+                    <span class="badge current-badge">
+                      <span class="pulse-mini"></span>
+                      Present
+                    </span>
+                  }
+                </div>
+                <div class="company-name">
+                  <span class="company-text">{{ exp.company }}</span>
+                  @if (exp.location) {
+                    <span class="company-loc">
+                      <app-icon name="map-pin" [size]="13" />
+                      {{ exp.location }}
+                    </span>
+                  }
+                </div>
+              </div>
+
+              <div class="period-badge">
+                <app-icon name="calendar" [size]="14" />
+                <span>{{ exp.period }}</span>
+              </div>
+            </div>
+
+            <!-- Bullet Achievements -->
+            <ul class="achievements-list">
+              @for (achievement of exp.achievements; track achievement) {
+                <li class="achievement-item">
+                  <span class="achievement-check">
+                    <app-icon name="check" [size]="14" />
+                  </span>
+                  <span class="achievement-text">{{ achievement }}</span>
+                </li>
+              }
+            </ul>
+
+            <!-- Tech Badges -->
+            <div class="experience-tech-stack">
+              @for (tech of exp.technologies; track tech) {
+                <span class="tech-pill">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

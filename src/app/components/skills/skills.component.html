@@ -1,0 +1,46 @@
+<section id="skills" class="section-wrapper skills-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="section-kicker">
+        <app-icon name="code" [size]="14" />
+        <span>Technical Arsenal</span>
+      </div>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="section-description">
+        Comprehensive expertise in frontend reactive systems, backend service layers, databases, and continuous delivery workflows.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      @for (category of portfolio().skillCategories; track category.title) {
+        <div class="skill-category-card">
+          <!-- Category Header -->
+          <div class="category-header">
+            <div class="category-icon-box">
+              <app-icon [name]="category.icon" [size]="22" />
+            </div>
+            <div>
+              <h3 class="category-title">{{ category.title }}</h3>
+              <p class="category-desc">{{ category.description }}</p>
+            </div>
+          </div>
+
+          <!-- Skills Pill Cloud -->
+          <div class="skills-cloud">
+            @for (skill of category.skills; track skill.name) {
+              <div class="skill-item" [class.featured]="skill.featured">
+                <span class="skill-name">{{ skill.name }}</span>
+                @if (skill.level) {
+                  <span class="skill-level">{{ skill.level }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

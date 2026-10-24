@@ -1,0 +1,109 @@
+<header class="navbar-header" [class.scrolled]="isScrolled()">
+  <div class="container navbar-container">
+    <!-- Brand / Monogram -->
+    <a href="#hero" class="brand" (click)="scrollToSection('hero', $event)">
+      <span class="brand-monogram">PS</span>
+      <span class="brand-name">Pratham Sonje<span class="brand-dot">.</span></span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        @for (link of navLinks; track link.target) {
+          <li class="nav-item">
+            <a
+              [href]="'#' + link.target"
+              class="nav-link"
+              [class.active]="activeSection() === link.target"
+              (click)="scrollToSection(link.target, $event)"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions (Theme Toggle, Resume Button, Mobile Hamburger) -->
+    <div class="navbar-actions">
+      <!-- Dark / Light Mode Switch -->
+      <button
+        type="button"
+        class="theme-toggle-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDark() ? 'Switch to light theme' : 'Switch to dark theme'"
+        title="Toggle color theme"
+      >
+        <app-icon [name]="isDark() ? 'sun' : 'moon'" [size]="18" />
+      </button>
+
+      <!-- Resume Button (Desktop) -->
+      <a
+        [href]="portfolio().resumeFilePath"
+        class="btn btn-primary resume-desktop-btn"
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <app-icon name="download" [size]="16" />
+        <span>Resume</span>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        type="button"
+        class="mobile-menu-btn"
+        [class.is-open]="mobileMenuOpen()"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <app-icon [name]="mobileMenuOpen() ? 'x' : 'menu'" [size]="22" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer / Dropdown Menu -->
+  @if (mobileMenuOpen()) {
+    <div class="mobile-drawer-backdrop" (click)="closeMobileMenu()"></div>
+    <div class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <span class="brand-name">Navigation</span>
+        <button
+          type="button"
+          class="drawer-close-btn"
+          (click)="closeMobileMenu()"
+          aria-label="Close menu"
+        >
+          <app-icon name="x" [size]="20" />
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        @for (link of navLinks; track link.target) {
+          <li>
+            <a
+              [href]="'#' + link.target"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === link.target"
+              (click)="scrollToSection(link.target, $event)"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a
+          [href]="portfolio().resumeFilePath"
+          class="btn btn-primary w-full"
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="download" [size]="16" />
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
+  }
+</header>
