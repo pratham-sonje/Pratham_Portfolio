@@ -1,7 +1,7 @@
 .hero-section {
   position: relative;
   padding-top: calc(5rem + 3rem);
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   overflow: hidden;
 }
 
