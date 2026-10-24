@@ -15,7 +15,7 @@ A modern, high-performance, fully responsive developer portfolio built with **An
   - **Hero:** Availability status badge, dynamic code snippet card, tech badges, quick action CTAs, and direct contact pills.
   - **About:** Career summary, engineering pillars, and core specializations.
   - **Experience:** Interactive career timeline with achievements, company metadata, and technology tags.
-  - **Projects:** Filterable showcase (All / Enterprise / Mobile & Canvas) with technical contributions and metrics.
+  - **Projects:** Filterable showcase (All / Enterprise / Mobile) with technical contributions and metrics.
   - **Skills:** Categorized skill matrix (Frontend, Backend, Databases, Tools) with proficiency tags.
   - **Education:** Academic qualifications with percentage distinction badges.
   - **Contact:** One-click email and phone copying with toast feedback, and a validated reactive contact form.
@@ -26,14 +26,14 @@ A modern, high-performance, fully responsive developer portfolio built with **An
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-|---|---|
-| **Framework** | Angular 22 (Standalone Components, Signals, Control Flow `@if`/`@for`) |
-| **Language** | TypeScript (Strict type checking) |
-| **Styling** | Modern CSS3 (CSS Custom Properties, Flexbox, CSS Grid, Glassmorphism) |
-| **State & Logic** | Angular Signals, Reactive Forms, RxJS |
-| **Tooling** | Angular CLI, npm, Prettier |
-| **Deployment** | GitHub Pages & GitHub Actions |
+| Layer             | Technologies                                                           |
+| ----------------- | ---------------------------------------------------------------------- |
+| **Framework**     | Angular 22 (Standalone Components, Signals, Control Flow `@if`/`@for`) |
+| **Language**      | TypeScript (Strict type checking)                                      |
+| **Styling**       | Modern CSS3 (CSS Custom Properties, Flexbox, CSS Grid, Glassmorphism)  |
+| **State & Logic** | Angular Signals, Reactive Forms, RxJS                                  |
+| **Tooling**       | Angular CLI, npm, Prettier                                             |
+| **Deployment**    | GitHub Pages & GitHub Actions                                          |
 
 ---
 
@@ -48,17 +48,20 @@ A modern, high-performance, fully responsive developer portfolio built with **An
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/<your-username>/<your-repo-name>.git
    cd Portfolio
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Start the local development server:**
+
    ```bash
    npm start
    # or
@@ -127,6 +130,7 @@ All personal data, skills, projects, and work experience are centralized in one 
 👉 **[`src/app/core/data/portfolio.data.ts`](src/app/core/data/portfolio.data.ts)**
 
 ### 1. Update Contact & Social Media
+
 ```typescript
 export const PORTFOLIO_DATA: PortfolioData = {
   name: 'Pratham Mukund Sonje',
@@ -141,7 +145,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
 ```
 
 ### 2. Adding a New Project
+
 In `PORTFOLIO_DATA.projects`, add a new object to the array:
+
 ```typescript
 {
   id: 'my-new-project',
@@ -154,7 +160,7 @@ In `PORTFOLIO_DATA.projects`, add a new object to the array:
     'Integrated REST APIs with state caching.',
   ],
   technologies: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL'],
-  category: 'Enterprise', // or 'Mobile & Canvas' or 'Full-Stack'
+  category: 'Enterprise', // or 'Mobile' or 'Full-Stack'
   featured: true,
   metrics: 'Sub-second load times & 99.9% uptime',
   githubUrl: 'https://github.com/username/project',
@@ -163,6 +169,7 @@ In `PORTFOLIO_DATA.projects`, add a new object to the array:
 ```
 
 ### 3. Adding or Updating Skills
+
 Modify `PORTFOLIO_DATA.skillCategories` to add categories or individual skill chips with proficiency levels (`'Advanced'`, `'Proficient'`, `'Intermediate'`).
 
 ---
@@ -177,6 +184,7 @@ Modify `PORTFOLIO_DATA.skillCategories` to add categories or individual skill ch
    - Leave it **Public**. Do not initialize with a README.
 
 2. **Commit and push your code:**
+
    ```bash
    git add .
    git commit -m "feat: complete modern Angular portfolio"
@@ -195,11 +203,13 @@ Modify `PORTFOLIO_DATA.skillCategories` to add categories or individual skill ch
 If you prefer building locally and deploying manually:
 
 1. **Build with your repository name:**
+
    ```bash
    npm run build:gh-pages <your-repo-name>
    # Example: npm run build:gh-pages portfolio
    ```
-   *If using a custom domain or root `<username>.github.io`, run without arguments: `npm run build:gh-pages`.*
+
+   _If using a custom domain or root `<username>.github.io`, run without arguments: `npm run build:gh-pages`._
 
 2. **Deploy using `angular-cli-ghpages` or git:**
    ```bash

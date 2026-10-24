@@ -17,7 +17,7 @@ export class ProjectsComponent {
 
   public activeCategory = signal<string>('All');
 
-  public categories = ['All', 'Enterprise', 'Mobile & Canvas'];
+  public categories = ['All', 'Enterprise', 'Full-Stack', 'Mobile'];
 
   public filteredProjects = computed(() => {
     const cat = this.activeCategory();
@@ -30,4 +30,3 @@ export class ProjectsComponent {
     this.activeCategory.set(cat);
   }
 }
-

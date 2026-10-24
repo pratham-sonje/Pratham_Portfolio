@@ -29,7 +29,7 @@ export class AboutComponent {
     },
     {
       icon: 'sparkles',
-      title: 'Cross-Platform Mobile & Canvas',
+      title: 'Cross-Platform Mobile',
       description:
         'Building responsive Android & web apps with Ionic & Capacitor, geolocation pinpoints, JWT authentication, and Fabric.js canvas optimizations.',
     },
@@ -41,4 +41,3 @@ export class AboutComponent {
     },
   ];
 }
-

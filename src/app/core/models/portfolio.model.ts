@@ -26,7 +26,7 @@ export interface ProjectItem {
   description: string;
   highlights: string[];
   technologies: string[];
-  category: 'Enterprise' | 'Mobile & Canvas' | 'Full-Stack';
+  category: 'Enterprise' | 'Mobile' | 'Full-Stack';
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
@@ -74,4 +74,3 @@ export interface PortfolioData {
   education: EducationItem[];
   stats: { label: string; value: string; helper?: string }[];
 }
-
