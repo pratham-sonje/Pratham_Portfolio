@@ -8,9 +8,9 @@ export type Theme = 'dark' | 'light';
 })
 export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);
-  private readonly STORAGE_KEY = 'ps_portfolio_theme';
+  private readonly STORAGE_KEY = 'ps_portfolio_theme_mode';
 
-  public currentTheme = signal<Theme>('dark');
+  public currentTheme = signal<Theme>('light');
 
   constructor() {
     if (isPlatformBrowser(this.platformId)) {
@@ -18,8 +18,7 @@ export class ThemeService {
       if (savedTheme === 'light' || savedTheme === 'dark') {
         this.currentTheme.set(savedTheme);
       } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        this.currentTheme.set(prefersDark ? 'dark' : 'dark'); // Default to modern sleek dark theme
+        this.currentTheme.set('light'); // Default to light theme
       }
 
       this.applyThemeToDocument(this.currentTheme());

@@ -17,7 +17,7 @@ export class NavbarComponent {
   private readonly platformId = inject(PLATFORM_ID);
 
   public readonly portfolio = this.portfolioService.portfolio;
-  public readonly isDark = signal<boolean>(true);
+  public readonly isDark = signal<boolean>(false);
   public isScrolled = signal<boolean>(false);
   public mobileMenuOpen = signal<boolean>(false);
   public activeSection = signal<string>('hero');
@@ -89,4 +89,3 @@ export class NavbarComponent {
     }
   }
 }
-

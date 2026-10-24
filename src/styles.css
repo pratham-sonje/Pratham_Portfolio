@@ -38,39 +38,8 @@
   --accent-emerald: #10b981;
 }
 
-/* Dark Theme (Default) */
+/* Light Theme (Default) */
 :root,
-.dark-theme {
-  --bg-body: #0b0f19;
-  --bg-surface: #111827;
-  --bg-surface-elevated: #1a2234;
-  --bg-surface-subtle: rgba(255, 255, 255, 0.03);
-  --bg-glass: rgba(11, 15, 25, 0.85);
-
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(99, 102, 241, 0.6);
-  --border-hover: rgba(255, 255, 255, 0.16);
-
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-inverse: #0f172a;
-
-  --accent-primary: #6366f1;
-  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%);
-  --accent-glow: rgba(99, 102, 241, 0.2);
-
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
-
-  --badge-bg: rgba(99, 102, 241, 0.12);
-  --badge-text: #a5b4fc;
-  --badge-border: rgba(99, 102, 241, 0.25);
-}
-
-/* Light Theme */
 .light-theme {
   --bg-body: #f8fafc;
   --bg-surface: #ffffff;
@@ -99,6 +68,37 @@
   --badge-bg: #eef2ff;
   --badge-text: #4338ca;
   --badge-border: #c7d2fe;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --bg-body: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1a2234;
+  --bg-surface-subtle: rgba(255, 255, 255, 0.03);
+  --bg-glass: rgba(11, 15, 25, 0.85);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(99, 102, 241, 0.6);
+  --border-hover: rgba(255, 255, 255, 0.16);
+
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-inverse: #0f172a;
+
+  --accent-primary: #6366f1;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%);
+  --accent-glow: rgba(99, 102, 241, 0.2);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+
+  --badge-bg: rgba(99, 102, 241, 0.12);
+  --badge-text: #a5b4fc;
+  --badge-border: rgba(99, 102, 241, 0.25);
 }
 
 /* ==========================================================================
@@ -187,11 +187,35 @@ button {
 
 .container {
   width: 100%;
-  max-width: 1140px;
+  /* max-width: 1140px; */
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+
+  .section-wrapper {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-description {
+    font-size: 0.9375rem;
+  }
 }
 
 .section-wrapper {

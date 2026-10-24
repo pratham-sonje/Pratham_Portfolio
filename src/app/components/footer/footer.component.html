@@ -8,7 +8,8 @@
           <span class="brand-name">Pratham<span class="brand-dot">.</span></span>
         </div>
         <p class="brand-desc">
-          Full-Stack Web Developer crafting high-performance, modular Angular architectures, and responsive web & mobile applications.
+          Full-Stack Web Developer crafting high-performance, modular Angular architectures, and
+          responsive web & mobile applications.
         </p>
       </div>
 
@@ -17,7 +18,9 @@
         <h4 class="footer-col-title">Navigation</h4>
         <ul class="footer-links-list">
           <li><a href="#about" (click)="scrollToSection('about', $event)">About</a></li>
-          <li><a href="#experience" (click)="scrollToSection('experience', $event)">Experience</a></li>
+          <li>
+            <a href="#experience" (click)="scrollToSection('experience', $event)">Experience</a>
+          </li>
           <li><a href="#projects" (click)="scrollToSection('projects', $event)">Projects</a></li>
           <li><a href="#skills" (click)="scrollToSection('skills', $event)">Skills</a></li>
           <li><a href="#education" (click)="scrollToSection('education', $event)">Education</a></li>
@@ -47,33 +50,19 @@
           >
             <app-icon name="github" [size]="18" />
           </a>
-          <a
-            [href]="'mailto:' + portfolio().email"
-            class="social-btn"
-            aria-label="Email Me"
-          >
+          <a [href]="'mailto:' + portfolio().email" class="social-btn" aria-label="Email Me">
             <app-icon name="mail" [size]="18" />
           </a>
-          <a
-            [href]="'tel:' + portfolio().phone"
-            class="social-btn"
-            aria-label="Call Me"
-          >
+          <a [href]="'tel:' + portfolio().phone" class="social-btn" aria-label="Call Me">
             <app-icon name="phone" [size]="18" />
           </a>
-        </div>
-
-        <div class="built-with">
-          <span class="built-text">Built with Angular 22 & TypeScript</span>
         </div>
       </div>
     </div>
 
     <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <p class="copyright-text">
-        © {{ currentYear }} {{ portfolio().name }}. All rights reserved.
-      </p>
+      <p class="copyright-text">© {{ currentYear }} {{ portfolio().name }}. All rights reserved.</p>
 
       <button
         type="button"
@@ -87,4 +76,3 @@
     </div>
   </div>
 </footer>
-

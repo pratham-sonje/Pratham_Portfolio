@@ -62,48 +62,51 @@
       </button>
     </div>
   </div>
-
-  <!-- Mobile Drawer / Dropdown Menu -->
-  @if (mobileMenuOpen()) {
-    <div class="mobile-drawer-backdrop" (click)="closeMobileMenu()"></div>
-    <div class="mobile-drawer">
-      <div class="mobile-drawer-header">
-        <span class="brand-name">Navigation</span>
-        <button
-          type="button"
-          class="drawer-close-btn"
-          (click)="closeMobileMenu()"
-          aria-label="Close menu"
-        >
-          <app-icon name="x" [size]="20" />
-        </button>
-      </div>
-      <ul class="mobile-nav-list">
-        @for (link of navLinks; track link.target) {
-          <li>
-            <a
-              [href]="'#' + link.target"
-              class="mobile-nav-link"
-              [class.active]="activeSection() === link.target"
-              (click)="scrollToSection(link.target, $event)"
-            >
-              {{ link.label }}
-            </a>
-          </li>
-        }
-      </ul>
-      <div class="mobile-drawer-footer">
-        <a
-          [href]="portfolio().resumeFilePath"
-          class="btn btn-primary w-full"
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <app-icon name="download" [size]="16" />
-          <span>Download Resume</span>
-        </a>
-      </div>
-    </div>
-  }
 </header>
+
+<!-- Mobile Drawer / Dropdown Menu (Outside header to avoid backdrop-filter trapping) -->
+@if (mobileMenuOpen()) {
+  <div class="mobile-drawer-backdrop" (click)="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand">
+        <span class="brand-monogram">PS</span>
+        <span class="brand-name">Navigation</span>
+      </div>
+      <button
+        type="button"
+        class="drawer-close-btn"
+        (click)="closeMobileMenu()"
+        aria-label="Close menu"
+      >
+        <app-icon name="x" [size]="20" />
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      @for (link of navLinks; track link.target) {
+        <li>
+          <a
+            [href]="'#' + link.target"
+            class="mobile-nav-link"
+            [class.active]="activeSection() === link.target"
+            (click)="scrollToSection(link.target, $event)"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a
+        [href]="portfolio().resumeFilePath"
+        class="btn btn-primary w-full"
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <app-icon name="download" [size]="16" />
+        <span>Download Resume</span>
+      </a>
+    </div>
+  </div>
+}
