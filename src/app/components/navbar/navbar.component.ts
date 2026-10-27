@@ -1,4 +1,4 @@
-import { Component, inject, signal, HostListener, PLATFORM_ID } from '@angular/core';
+import { Component, inject, signal, computed, HostListener, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
 import { PortfolioService } from '../../core/services/portfolio.service';
@@ -17,7 +17,7 @@ export class NavbarComponent {
   private readonly platformId = inject(PLATFORM_ID);
 
   public readonly portfolio = this.portfolioService.portfolio;
-  public readonly isDark = signal<boolean>(false);
+  public readonly isDark = computed(() => this.themeService.currentTheme() === 'dark');
   public isScrolled = signal<boolean>(false);
   public mobileMenuOpen = signal<boolean>(false);
   public activeSection = signal<string>('hero');
@@ -31,13 +31,8 @@ export class NavbarComponent {
     { label: 'Contact', target: 'contact' },
   ];
 
-  constructor() {
-    this.isDark.set(this.themeService.currentTheme() === 'dark');
-  }
-
   public toggleTheme(): void {
     this.themeService.toggleTheme();
-    this.isDark.set(this.themeService.currentTheme() === 'dark');
   }
 
   public toggleMobileMenu(): void {
